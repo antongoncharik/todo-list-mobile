@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, Button } from 'react-native';
 
 export const AddTodo = (props) => {
+  const [inputText, setInputText] = useState('');
+
   return (
     <View style={styles.containerBlock}>
-      <TextInput style={styles.input} placeholder={props.placeholder} />
-      <Button style={styles.button} title={props.title} />
+      <TextInput style={styles.input}
+        placeholder='Enter item'
+        value={inputText}
+        onChangeText={text => setInputText(text)}
+      />
+      <Button style={styles.button}
+        title='Add item'
+        onPress={() => {
+          if (!inputText) return;
+          props.addTodo({ title: inputText, id: Date.now(), });
+          setInputText('');
+        }} />
     </View>
   );
 }
@@ -15,6 +27,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 10,
+    marginBottom: 10,
   },
   input: {
     borderBottomWidth: 2,
