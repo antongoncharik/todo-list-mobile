@@ -14,7 +14,7 @@ export const AddTodo = (props) => {
       <Button style={styles.button}
         title='Add item'
         onPress={() => {
-          if (!inputText) return;
+          if (!inputText.trim()) return;
           props.addTodo({ title: inputText, id: Date.now(), });
           setInputText('');
         }} />

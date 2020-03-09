@@ -3,7 +3,8 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 export const Todo = (props) => {
   return (
-    <TouchableOpacity onLongPress={() => props.deleteTodo(props.id)}>
+    <TouchableOpacity onPress={() => props.openTodo(props.id)}
+      onLongPress={() => props.deleteTodo(props.id)}>
       <View style={styles.todoBlock}>
         <Text style={styles.textBlock}>{props.title}</Text>
       </View>
