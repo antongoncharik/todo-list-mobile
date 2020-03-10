@@ -6,7 +6,8 @@ import { TodoScreen } from './src/screens/TodoScreen';
 
 export default function App() {
   const [todos, setTodos] = useState([]);
-  const [openedIdTodo, setOpenedIdTodo] = useState(null);
+  const [activeIdTodo, setActivedIdTodo] = useState(null);
+  const [activeTodo, setActiveTodo] = useState(null);
 
   const handlerAddTodo = (todo) => {
     setTodos(prevState => [...prevState, todo]);
@@ -24,7 +25,11 @@ export default function App() {
     )
   };
   const handlerOpenTodo = (id) => {
-    setOpenedIdTodo(id);
+    setActivedIdTodo(id);
+    setActiveTodo(todos.find(item => item.id === id));
+  };
+  const handlerCloseTodo = () => {
+    setActivedIdTodo(null);
   };
 
   let screen = (<MainScreen todos={todos}
@@ -32,9 +37,11 @@ export default function App() {
     deleteTodo={handlerDeleteTodo}
     openTodo={handlerOpenTodo} />);
 
-  if (openedIdTodo) {
-    screen = (<TodoScreen inputText={'efsfe'}
-      updateTodo={handlerUpdateTodo} />);
+  if (activeIdTodo) {
+    screen = (<TodoScreen inputText={activeTodo.title}
+      updateTodo={handlerUpdateTodo}
+      closeTodo={handlerCloseTodo}
+      activeIdTodo={activeIdTodo} />);
   }
 
   return (

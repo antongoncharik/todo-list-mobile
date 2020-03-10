@@ -1,16 +1,31 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, Button } from 'react-native';
+import { EditModal } from '../components/EditModal/EditModal';
 
 export const TodoScreen = (props) => {
-  const [inputText, setInputText] = useState(props.inputText);
+  const [showModal, setShowModal] = useState(false);
+
+  const handlerSave = inputText => {
+    props.updateTodo(props.activeIdTodo, inputText);
+    setShowModal(false);
+  };
+  const handlerCancel = () => {
+    setShowModal(false);
+  };
 
   return (
     <View>
-      <TextInput value={inputText}
-        onChangeText={text => setInputText(text)} />
-      <View>
-        <Button title='Save' />
-        <Button title='Cancel' />
+      {showModal &&
+        <EditModal showModal={showModal}
+          inputText={props.inputText}
+          save={handlerSave}
+          cancel={handlerCancel} />}
+      <TextInput value={props.inputText} />
+      <View style={styles.buttons}>
+        <Button title='Edit'
+          onPress={() => setShowModal(true)} />
+        <Button title='Back'
+          onPress={() => props.closeTodo()} />
       </View>
     </View>
   );
@@ -29,7 +44,8 @@ const styles = StyleSheet.create({
     width: '70%',
     fontSize: 18,
   },
-  button: {
-
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
