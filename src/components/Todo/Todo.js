@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import {THEME} from '../../constants/theme';
 
 export const Todo = (props) => {
   return (
@@ -14,16 +15,16 @@ export const Todo = (props) => {
 
 const styles = StyleSheet.create({
   todoBlock: {
-    height: 50,
-    backgroundColor: '#1ab8ed',
+    minHeight: 50,
+    backgroundColor: THEME.ORANGE,
     marginVertical: 5,
-    marginHorizontal: 10,
     justifyContent: 'center',
     alignItems: 'flex-start',
     borderRadius: 10,
-
   },
   textBlock: {
-    fontSize: 24,
+    fontSize: 18,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
   }
 });

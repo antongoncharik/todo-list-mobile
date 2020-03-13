@@ -5,7 +5,7 @@ import { Todo } from '../components/Todo/Todo';
 
 export const MainScreen = (props) => {
   return (
-    <View>
+    <View style={styles.containerBlock}>
       <AddTodo addTodo={props.addTodo} />
       <FlatList
         data={props.todos}
@@ -21,8 +21,6 @@ export const MainScreen = (props) => {
 
 const styles = StyleSheet.create({
   containerBlock: {
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    marginHorizontal: 10,
+  }
 });

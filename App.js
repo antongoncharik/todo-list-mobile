@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 import { Navbar } from './src/components/Navbar/Navbar';
 import { MainScreen } from './src/screens/MainScreen';
 import { TodoScreen } from './src/screens/TodoScreen';
+import { THEME } from './src/constants/theme';
 
 export default function App() {
   const [todos, setTodos] = useState([]);
@@ -13,7 +14,24 @@ export default function App() {
     setTodos(prevState => [...prevState, todo]);
   };
   const handlerDeleteTodo = (id) => {
-    setTodos(prevState => prevState.filter(item => item.id !== id));
+    const title = `${todos.find(item => item.id === id).title.slice(0, 30)}...`;
+    Alert.alert(
+      'Delet item',
+      `Do you really want to delete item "${title}"?`,
+      [
+        {
+          text: 'Cancel',
+        },
+        {
+          text: 'OK',
+          onPress: () => {
+            setTodos(prevState => prevState.filter(item => item.id !== id));
+            setActivedIdTodo(null);
+          }
+        },
+      ],
+      { cancelable: false },
+    );
   };
   const handlerUpdateTodo = (id, text) => {
     setTodos(prevState => prevState.map(item => {
@@ -41,22 +59,21 @@ export default function App() {
     screen = (<TodoScreen inputText={activeTodo.title}
       updateTodo={handlerUpdateTodo}
       closeTodo={handlerCloseTodo}
+      deleteTodo={handlerDeleteTodo}
       activeIdTodo={activeIdTodo} />);
   }
 
   return (
     <View>
       <Navbar title='Todo list' />
-      <View>{screen}</View>
+      <View style={styles.containerBlock}>{screen}</View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  containerBlock: {
+    backgroundColor: THEME.ORANGE_LIGHT,
+    height: '100%',
   },
 });

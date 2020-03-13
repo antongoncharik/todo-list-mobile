@@ -1,4 +1,9 @@
 export const THEME = {
-  RED: '#FF0033',
-  GREEN: '#00CC66',
+  RED: '#CC0000',
+  GREEN: '#339966',
+  ORANGE_LIGHT: '#FFCC99',
+  ORANGE: '#FF9966',
+  ORANGE_DARK: '#FF6600',
+  GREY: '#666666',
+  BLACK: '#000000',
 };

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Button } from 'react-native';
+import { StyleSheet, View, TextInput, Button, Alert } from 'react-native';
+import { THEME } from '../../constants/theme';
+import { Alert1 } from '../../components/Alert/Alert';
 
 export const AddTodo = (props) => {
   const [inputText, setInputText] = useState('');
@@ -8,10 +10,26 @@ export const AddTodo = (props) => {
     <View style={styles.containerBlock}>
       <TextInput style={styles.input}
         placeholder='Enter item'
+        placeholderTextColor={THEME.GREY}
         value={inputText}
-        onChangeText={text => setInputText(text)}
+        onChangeText={text => {
+          if (text.length > 300) {
+            Alert.alert(
+              'Warning',
+              `Todo can not be more than 300 symbols.`,
+              [
+                {
+                  text: 'OK',
+                },
+              ],
+              { cancelable: false },
+            )
+            return;
+          }
+          setInputText(text);
+        }}
       />
-      <Button style={styles.button}
+      <Button color={THEME.GREEN}
         title='Add item'
         onPress={() => {
           if (!inputText.trim()) return;
@@ -26,7 +44,7 @@ const styles = StyleSheet.create({
   containerBlock: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 10,
+    marginTop: 10,
     marginBottom: 10,
   },
   input: {
@@ -34,8 +52,5 @@ const styles = StyleSheet.create({
     borderBottomColor: '#1ab8ed',
     width: '70%',
     fontSize: 18,
-  },
-  button: {
-
   },
 });
