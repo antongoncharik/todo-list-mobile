@@ -27,7 +27,7 @@ export const TodoScreen = (props) => {
       <View style={styles.buttonsBlock}>
         <View style={styles.buttonBlock}>
           <Button title='Delete'
-            color={THEME.RED}
+            color={THEME.ORANGE_DARK}
             onPress={() => props.deleteTodo(props.activeIdTodo)} />
         </View>
         <View style={styles.buttonBlock}>
@@ -59,10 +59,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 10,
     paddingHorizontal: 10,
-    // shadowColor: '#000',
-    // shadowRadius: 5,
-    // shadowOpacity: 0.5,
-    // shadowOffset: {width: 2, height: 2},
     elevation: 8,
   },
   text: {

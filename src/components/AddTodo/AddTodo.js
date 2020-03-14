@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   input: {
     borderBottomWidth: 2,
-    borderBottomColor: '#1ab8ed',
+    borderBottomColor: THEME.BROWN,
     width: '70%',
     fontSize: 18,
   },

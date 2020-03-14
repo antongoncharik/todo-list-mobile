@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import {THEME} from '../../constants/theme';
+import { THEME } from '../../constants/theme';
 
 export const Todo = (props) => {
   return (

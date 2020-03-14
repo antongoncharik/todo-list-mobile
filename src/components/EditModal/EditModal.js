@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Modal, Button } from 'react-native';
+import { StyleSheet, View, TextInput, Modal, Button, Alert } from 'react-native';
 import { THEME } from '../../constants/theme';
 
 export const EditModal = (props) => {
@@ -14,7 +14,22 @@ export const EditModal = (props) => {
         <View style={styles.inputBlock}>
           <TextInput style={styles.input}
             value={inputText}
-            onChangeText={text => setInputText(text)} />
+            onChangeText={text => {
+              if (text.length > 300) {
+                Alert.alert(
+                  'Warning',
+                  `Todo can not be more than 300 symbols.`,
+                  [
+                    {
+                      text: 'OK',
+                    },
+                  ],
+                  { cancelable: false },
+                )
+                return;
+              }
+              setInputText(text);
+            }} />
         </View>
         <View style={styles.buttonsBlock}>
           <View style={styles.buttonBlock}>
@@ -51,7 +66,7 @@ const styles = StyleSheet.create({
   input: {
     fontSize: 18,
     borderBottomWidth: 2,
-    borderBottomColor: '#1ab8ed',
+    borderBottomColor: THEME.BROWN,
     width: '100%',
   },
   buttonsBlock: {
