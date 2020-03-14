@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, Modal, Button, Alert } from 'react-native';
-import { THEME } from '../../constants/theme';
+
+import { COLOR, PADDING, MARGIN } from '../../constants/theme';
 
 export const EditModal = (props) => {
   const [inputText, setInputText] = useState(props.inputText);
@@ -34,12 +35,12 @@ export const EditModal = (props) => {
         <View style={styles.buttonsBlock}>
           <View style={styles.buttonBlock}>
             <Button title='Save'
-              color={THEME.GREEN}
+              color={COLOR.GREEN}
               onPress={() => props.save(inputText)} />
           </View>
           <View style={styles.buttonBlock}>
             <Button title='Cancel'
-              color={THEME.GREY}
+              color={COLOR.GREY}
               onPress={() => props.cancel()} />
           </View>
         </View>
@@ -50,9 +51,9 @@ export const EditModal = (props) => {
 
 const styles = StyleSheet.create({
   containerBlock: {
-    paddingHorizontal: 10,
+    paddingHorizontal: PADDING.horizontal,
     alignItems: 'center',
-    backgroundColor: THEME.ORANGE_LIGHT,
+    backgroundColor: COLOR.ORANGE_LIGHT,
     height: '100%',
   },
   inputBlock: {
@@ -60,19 +61,19 @@ const styles = StyleSheet.create({
     marginTop: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 10,
-    paddingHorizontal: 10,
+    paddingHorizontal: PADDING.horizontal,
+    paddingVertical: PADDING.vertical,
   },
   input: {
     fontSize: 18,
     borderBottomWidth: 2,
-    borderBottomColor: THEME.BROWN,
+    borderBottomColor: COLOR.BROWN,
     width: '100%',
   },
   buttonsBlock: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 10,
+    marginTop: MARGIN.top,
     width: '70%',
   },
   buttonBlock: {

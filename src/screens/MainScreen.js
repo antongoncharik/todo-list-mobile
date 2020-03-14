@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, FlatList, Image } from 'react-native';
+
 import { AddTodo } from '../components/AddTodo/AddTodo';
 import { Todo } from '../components/Todo/Todo';
+import { MARGIN } from '../constants/theme';
 
 export const MainScreen = (props) => {
   return (
@@ -28,7 +30,7 @@ export const MainScreen = (props) => {
 
 const styles = StyleSheet.create({
   containerBlock: {
-    marginHorizontal: 10,
+    marginHorizontal: MARGIN.horizontal,
   },
   imageBlock: {
     alignItems: 'center',

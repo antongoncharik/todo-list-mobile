@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
+
+import { UiTextRegular } from '../components/UI/UiTextRegular';
 import { EditModal } from '../components/EditModal/EditModal';
-import { THEME } from '../constants/theme';
+import { COLOR, PADDING, MARGIN, BORDER } from '../constants/theme';
 
 export const TodoScreen = (props) => {
   const [showModal, setShowModal] = useState(false);
@@ -22,22 +24,22 @@ export const TodoScreen = (props) => {
           save={handlerSave}
           cancel={handlerCancel} />}
       <View style={styles.textBlock}>
-        <Text style={styles.text}>{props.inputText}</Text>
+        <UiTextRegular>{props.inputText}</UiTextRegular>
       </View>
       <View style={styles.buttonsBlock}>
         <View style={styles.buttonBlock}>
           <Button title='Delete'
-            color={THEME.ORANGE_DARK}
+            color={COLOR.ORANGE_DARK}
             onPress={() => props.deleteTodo(props.activeIdTodo)} />
         </View>
         <View style={styles.buttonBlock}>
           <Button title='Edit'
-            color={THEME.GREEN}
+            color={COLOR.GREEN}
             onPress={() => setShowModal(true)} />
         </View>
         <View style={styles.buttonBlock}>
           <Button title='Back'
-            color={THEME.GREY}
+            color={COLOR.GREY}
             onPress={() => props.closeTodo()} />
         </View>
       </View>
@@ -47,27 +49,24 @@ export const TodoScreen = (props) => {
 
 const styles = StyleSheet.create({
   containerBlock: {
-    marginHorizontal: 10,
+    marginHorizontal: MARGIN.horizontal,
     alignItems: 'center',
   },
   textBlock: {
-    backgroundColor: THEME.ORANGE,
-    borderRadius: 10,
+    backgroundColor: COLOR.ORANGE,
+    borderRadius: BORDER.radius,
     width: '100%',
-    marginTop: 10,
+    marginTop: MARGIN.top,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 10,
-    paddingHorizontal: 10,
+    paddingHorizontal: PADDING.horizontal,
+    paddingVertical: PADDING.vertical,
     elevation: 8,
-  },
-  text: {
-    fontSize: 18,
   },
   buttonsBlock: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 10,
+    marginTop: MARGIN.top,
     width: '100%',
   },
   buttonBlock: {

@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Alert } from 'react-native';
+import * as Font from 'expo-font';
+import { AppLoading } from 'expo';
+
 import { Navbar } from './src/components/Navbar/Navbar';
 import { MainScreen } from './src/screens/MainScreen';
 import { TodoScreen } from './src/screens/TodoScreen';
-import { THEME } from './src/constants/theme';
+import { COLOR } from './src/constants/theme';
+
+const LoadApp = async () => {
+  await Font.loadAsync({
+    robotoBold: require('./assets/fonts/Roboto-Bold.ttf'),
+    robotoRegular: require('./assets/fonts/Roboto-Regular.ttf'),
+  });
+}
 
 export default function App() {
   const [todos, setTodos] = useState([]);
   const [activeIdTodo, setActivedIdTodo] = useState(null);
   const [activeTodo, setActiveTodo] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handlerAddTodo = (todo) => {
     setTodos(prevState => [...prevState, todo]);
@@ -63,6 +74,12 @@ export default function App() {
       activeIdTodo={activeIdTodo} />);
   }
 
+  if (!isLoading) {
+    return <AppLoading startAsync={LoadApp}
+      onError={error => console.log(error)}
+      onFinish={() => setIsLoading(true)} />
+  }
+
   return (
     <View>
       <Navbar title='Todo list' />
@@ -73,7 +90,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   containerBlock: {
-    backgroundColor: THEME.ORANGE_LIGHT,
+    backgroundColor: COLOR.ORANGE_LIGHT,
     height: '100%',
   },
 });

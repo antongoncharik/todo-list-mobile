@@ -1,13 +1,15 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { THEME } from '../../constants/theme';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
+
+import { UiTextRegular } from '../../components/UI/UiTextRegular';
+import { COLOR, PADDING, MARGIN, BORDER } from '../../constants/theme';
 
 export const Todo = (props) => {
   return (
     <TouchableOpacity onPress={() => props.openTodo(props.id)}
       onLongPress={() => props.deleteTodo(props.id)}>
       <View style={styles.todoBlock}>
-        <Text style={styles.textBlock}>{props.title}</Text>
+        <UiTextRegular style={styles.textBlock}>{props.title}</UiTextRegular>
       </View>
     </TouchableOpacity>
   );
@@ -16,15 +18,14 @@ export const Todo = (props) => {
 const styles = StyleSheet.create({
   todoBlock: {
     minHeight: 50,
-    backgroundColor: THEME.ORANGE,
-    marginVertical: 5,
+    backgroundColor: COLOR.ORANGE,
+    marginVertical: MARGIN.vertical,
     justifyContent: 'center',
     alignItems: 'flex-start',
-    borderRadius: 10,
+    borderRadius: BORDER.radius,
   },
   textBlock: {
-    fontSize: 18,
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-  }
+    paddingHorizontal: PADDING.horizontal,
+    paddingVertical: PADDING.vertical,
+  },
 });

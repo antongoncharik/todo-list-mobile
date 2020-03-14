@@ -1,11 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { THEME } from '../../constants/theme';
+
+import { UiTextBold } from '../UI/UiTextBold';;
+import { COLOR } from '../../constants/theme';
 
 export const Navbar = (props) => {
   return (
     <View style={styles.navbarBlock}>
-      <Text style={styles.text}>{props.title}</Text>
+      <UiTextBold style={styles.text}>{props.title}</UiTextBold>
     </View>
   );
 }
@@ -13,11 +15,11 @@ export const Navbar = (props) => {
 const styles = StyleSheet.create({
   navbarBlock: {
     height: 50,
-    backgroundColor: THEME.BROWN,
+    backgroundColor: COLOR.BROWN,
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
   text: {
-    fontSize: 18,
+    fontSize: 22,
   },
 });

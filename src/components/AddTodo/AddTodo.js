@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, Button, Alert } from 'react-native';
-import { THEME } from '../../constants/theme';
+
+import { COLOR, MARGIN } from '../../constants/theme';
 import { Alert1 } from '../../components/Alert/Alert';
 
 export const AddTodo = (props) => {
@@ -10,7 +11,7 @@ export const AddTodo = (props) => {
     <View style={styles.containerBlock}>
       <TextInput style={styles.input}
         placeholder='Enter item'
-        placeholderTextColor={THEME.GREY}
+        placeholderTextColor={COLOR.GREY}
         value={inputText}
         onChangeText={text => {
           if (text.length > 300) {
@@ -29,7 +30,7 @@ export const AddTodo = (props) => {
           setInputText(text);
         }}
       />
-      <Button color={THEME.GREEN}
+      <Button color={COLOR.GREEN}
         title='Add item'
         onPress={() => {
           if (!inputText.trim()) return;
@@ -44,12 +45,12 @@ const styles = StyleSheet.create({
   containerBlock: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: MARGIN.top,
+    marginBottom: MARGIN.bottom,
   },
   input: {
     borderBottomWidth: 2,
-    borderBottomColor: THEME.BROWN,
+    borderBottomColor: COLOR.BROWN,
     width: '70%',
     fontSize: 18,
   },
