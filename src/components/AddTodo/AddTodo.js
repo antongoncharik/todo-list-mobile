@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Button, Alert, Keyboard } from 'react-native';
+import { StyleSheet, View, TextInput, Button, Alert, Keyboard, Dimensions } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 import { COLOR, MARGIN } from '../../constants/theme';
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   input: {
     borderBottomWidth: 2,
     borderBottomColor: COLOR.BROWN,
-    width: '70%',
+    width: Dimensions.get('window').width / 3,
     fontSize: 18,
   },
 });
