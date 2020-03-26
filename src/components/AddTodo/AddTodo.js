@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, TextInput, Button, Alert, Keyboard, Dimensions } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -9,6 +9,18 @@ import { UiTextRegular } from './../UI/UiTextRegular';
 
 export const AddTodo = (props) => {
   const [inputText, setInputText] = useState('');
+  const [widthDevice, setWidthDevice] = useState(null);
+
+  useEffect(() => {
+    const update = () => {
+      setWidthDevice(Dimensions.get('window').width);
+      console.log(Dimensions.get('window').width)
+    };
+    Dimensions.addEventListener('change', update);
+    return () => {
+      Dimensions.removeEventListener('change', update);
+    }
+  });
 
   return (
     <View style={styles.containerBlock}>
