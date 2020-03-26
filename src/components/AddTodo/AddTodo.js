@@ -37,7 +37,7 @@ export const AddTodo = (props) => {
         if (!inputText.trim()) return;
         props.addTodo({ title: inputText, id: Date.now(), });
         setInputText('');
-        Keyboard.dismiss();
+        // Keyboard.dismiss();
       }}>
         <AntDesign name="pluscircleo"
           size={32}
