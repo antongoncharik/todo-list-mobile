@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Button, Alert } from 'react-native';
+import { StyleSheet, View, TextInput, Button, Alert, Keyboard } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 import { COLOR, MARGIN } from '../../constants/theme';
@@ -37,6 +37,7 @@ export const AddTodo = (props) => {
         if (!inputText.trim()) return;
         props.addTodo({ title: inputText, id: Date.now(), });
         setInputText('');
+        Keyboard.dismiss();
       }}>
         <AntDesign name="pluscircleo"
           size={32}
