@@ -3,7 +3,7 @@ import { StyleSheet, Text } from 'react-native';
 
 export const UiTextRegular = (props) => {
   return (
-      <Text style={{...styles.default, ...props.style}}>{props.children}</Text>
+    <Text style={{ ...styles.default, ...props.style }}>{props.children}</Text>
   );
 }
 

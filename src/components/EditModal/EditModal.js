@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, Modal, Button, Alert } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 
 import { COLOR, PADDING, MARGIN } from '../../constants/theme';
+import { UiButton } from './../UI/UiButton';
+import { UiTextRegular } from './../UI/UiTextRegular';
 
 export const EditModal = (props) => {
   const [inputText, setInputText] = useState(props.inputText);
@@ -34,14 +37,20 @@ export const EditModal = (props) => {
         </View>
         <View style={styles.buttonsBlock}>
           <View style={styles.buttonBlock}>
-            <Button title='Save'
-              color={COLOR.GREEN}
-              onPress={() => props.save(inputText)} />
+            <UiButton onPress={() => props.save(inputText)}>
+              <AntDesign name="save"
+                size={32}
+                color={COLOR.GREEN} />
+              <UiTextRegular style={{ fontSize: 12 }}>Save</UiTextRegular>
+            </UiButton>
           </View>
           <View style={styles.buttonBlock}>
-            <Button title='Cancel'
-              color={COLOR.GREY}
-              onPress={() => props.cancel()} />
+            <UiButton onPress={() => props.cancel()}>
+              <AntDesign name="back"
+                size={32}
+                color={COLOR.GREY} />
+              <UiTextRegular style={{ fontSize: 12 }}>Cancel</UiTextRegular>
+            </UiButton>
           </View>
         </View>
       </View>

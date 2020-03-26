@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, Button, Alert } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 
 import { COLOR, MARGIN } from '../../constants/theme';
 import { Alert1 } from '../../components/Alert/Alert';
+import { UiButton } from './../UI/UiButton';
+import { UiTextRegular } from './../UI/UiTextRegular';
 
 export const AddTodo = (props) => {
   const [inputText, setInputText] = useState('');
@@ -30,13 +33,16 @@ export const AddTodo = (props) => {
           setInputText(text);
         }}
       />
-      <Button color={COLOR.GREEN}
-        title='Add item'
-        onPress={() => {
-          if (!inputText.trim()) return;
-          props.addTodo({ title: inputText, id: Date.now(), });
-          setInputText('');
-        }} />
+      <UiButton onPress={() => {
+        if (!inputText.trim()) return;
+        props.addTodo({ title: inputText, id: Date.now(), });
+        setInputText('');
+      }}>
+        <AntDesign name="pluscircleo"
+          size={32}
+          color={COLOR.GREEN} />
+        <UiTextRegular style={{ fontSize: 12 }}>Add</UiTextRegular>
+      </UiButton>
     </View>
   );
 }
