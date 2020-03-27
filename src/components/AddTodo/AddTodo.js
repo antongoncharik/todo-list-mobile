@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, TextInput, Button, Alert, Keyboard, Dimensions } from 'react-native';
+import { StyleSheet, View, TextInput, Alert, Dimensions } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 import { COLOR, MARGIN } from '../../constants/theme';
@@ -49,7 +49,6 @@ export const AddTodo = (props) => {
         if (!inputText.trim()) return;
         props.addTodo({ title: inputText, id: Date.now(), });
         setInputText('');
-        // Keyboard.dismiss();
       }}>
         <AntDesign name="pluscircleo"
           size={32}
@@ -58,19 +57,20 @@ export const AddTodo = (props) => {
       </UiButton>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   containerBlock: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     marginTop: MARGIN.top,
     marginBottom: MARGIN.bottom,
   },
   input: {
     borderBottomWidth: 2,
     borderBottomColor: COLOR.BROWN,
-    width: Dimensions.get('window').width / 3,
+    width: '90%',
     fontSize: 18,
   },
 });

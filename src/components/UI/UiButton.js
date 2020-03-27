@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity, TouchableNativeFeedback, Platform } from 'react-native';
-import { UiTextRegular } from './UiTextRegular';
 
 export const UiButton = (props) => {
   const WrapperOpacity = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
@@ -13,10 +12,11 @@ export const UiButton = (props) => {
       </View>
     </WrapperOpacity>
   );
-}
+};
 
 const styles = StyleSheet.create({
   default: {
-
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

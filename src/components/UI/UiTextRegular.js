@@ -5,7 +5,7 @@ export const UiTextRegular = (props) => {
   return (
     <Text style={{ ...styles.default, ...props.style }}>{props.children}</Text>
   );
-}
+};
 
 const styles = StyleSheet.create({
   default: {

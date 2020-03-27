@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { UiTextBold } from '../UI/UiTextBold';;
 import { COLOR } from '../../constants/theme';
@@ -10,7 +10,7 @@ export const Navbar = (props) => {
       <UiTextBold style={styles.text}>{props.title}</UiTextBold>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   navbarBlock: {

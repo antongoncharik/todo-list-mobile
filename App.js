@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Alert } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
@@ -13,7 +13,7 @@ const LoadApp = async () => {
     robotoBold: require('./assets/fonts/Roboto-Bold.ttf'),
     robotoRegular: require('./assets/fonts/Roboto-Regular.ttf'),
   });
-}
+};
 
 export default function App() {
   const [todos, setTodos] = useState([]);
@@ -86,7 +86,7 @@ export default function App() {
       <View style={styles.containerBlock}>{screen}</View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   containerBlock: {

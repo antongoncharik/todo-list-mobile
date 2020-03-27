@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, View, FlatList, Image } from 'react-native';
 
 import { AddTodo } from '../components/AddTodo/AddTodo';
@@ -26,7 +26,7 @@ export const MainScreen = (props) => {
       />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   containerBlock: {

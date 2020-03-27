@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Modal, Button, Alert } from 'react-native';
+import { StyleSheet, View, TextInput, Modal, Alert } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 import { COLOR, PADDING, MARGIN } from '../../constants/theme';
@@ -56,7 +56,7 @@ export const EditModal = (props) => {
       </View>
     </Modal>
   );
-}
+};
 
 const styles = StyleSheet.create({
   containerBlock: {

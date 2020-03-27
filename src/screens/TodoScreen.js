@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 import { UiTextRegular } from '../components/UI/UiTextRegular';
@@ -56,7 +56,7 @@ export const TodoScreen = (props) => {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   containerBlock: {
